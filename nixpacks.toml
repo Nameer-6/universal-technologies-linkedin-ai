@@ -3,6 +3,7 @@ nixPkgs = ["php", "phpPackages.composer", "nodejs", "nodePackages.npm"]
 
 [phases.install]
 cmds = [
+  "cd backend && mkdir -p bootstrap/cache && chmod 755 bootstrap/cache",
   "cd backend && composer install --no-dev --optimize-autoloader",
   "cd frontend && npm ci && npm run build"
 ]
