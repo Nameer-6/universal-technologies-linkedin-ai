@@ -3,14 +3,14 @@ nixPkgs = ["php", "phpPackages.composer", "nodejs", "npm"]
 
 [phases.install]
 cmds = [
-  "cd backend && composer install --no-dev --optimize-autoloader",
+  "composer install --no-dev --optimize-autoloader",
   "cd frontend && npm ci && npm run build"
 ]
 
 [phases.build]
 cmds = [
   "cd backend && php artisan config:cache",
-  "cd backend && php artisan route:cache",
+  "cd backend && php artisan route:cache", 
   "cd backend && php artisan view:cache"
 ]
 
@@ -20,3 +20,4 @@ cmd = "cd backend && php artisan serve --host=0.0.0.0 --port=$PORT"
 [variables]
 NIXPACKS_PHP_VERSION = "8.2"
 NIXPACKS_PHP_FPM = "false"
+NIXPACKS_NO_DEFAULT_CACHE_DIRS = "true"
