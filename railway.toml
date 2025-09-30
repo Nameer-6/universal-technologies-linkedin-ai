@@ -1,0 +1,14 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "cd backend && php artisan serve --host=0.0.0.0 --port=$PORT"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 300
+restartPolicy = { maxRetries = 10 }
+
+[env]
+APP_ENV = "production"
+APP_DEBUG = "false"
+NIXPACKS_PHP_VERSION = "8.2"
+NIXPACKS_PHP_FPM = "false"
