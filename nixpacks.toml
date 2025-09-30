@@ -11,8 +11,7 @@ cmds = [
 [phases.build]
 cmds = [
   "cd backend && php artisan config:cache",
-  "cd backend && php artisan route:cache", 
-  "cd backend && php artisan view:cache"
+  "cd backend && php artisan route:cache"
 ]
 
 [start]
