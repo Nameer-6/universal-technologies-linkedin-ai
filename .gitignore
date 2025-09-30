@@ -54,6 +54,7 @@ phpunit.xml
 # Documentation
 *.md
 !README.md
+!railway-deployment-guide.md
 
 # Vercel
 .vercel
