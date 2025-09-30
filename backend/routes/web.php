@@ -132,7 +132,6 @@ Route::middleware(['web'])->group(function () {
     Route::get('/api/metrics',               [LinkedInController::class, 'getAllPostMetrics']);
 
     Route::post('/api/generate-post', [LinkedInController::class, 'generatePostApi']);
-    Route::get('/api/health', [LinkedInController::class, 'health']);
     Route::post('/api/cancel-subscription', [AuthController::class, 'cancelSubscription']);
     Route::get('/api/user/subscription', [AuthController::class, 'currentUserSubscription']);
     Route::get('/api/user-scheduled-posts', [LinkedInController::class, 'getUserScheduledPosts']);
