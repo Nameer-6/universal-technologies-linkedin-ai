@@ -1,0 +1,903 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1, h2, h3, h4, h5 {
+    color: #2f3146 !important;
+}
+
+.fixed-area{
+    width: 25%;
+    overflow: hidden;
+    max-width: 100%;
+    position: fixed;
+    height: 100%;
+}
+
+.image-side{
+    height: 100%;
+    background-image: url('../img/side.jpg');
+}
+.image-side .layer{
+    height: 100%;
+    width: 100%;
+    background: #000000ad;
+}
+.right-area{
+    position: absolute;
+    /* position: relative; */
+    width: 75%;
+    margin-left: auto;
+    height: 100%;
+    right: 0;
+}
+.form-content h2{
+    font-size: 40px;
+    font-weight: 800;
+    font-family: "Kanit", Sans-serif;
+}
+.form-content h3{
+    font-size: 1.75rem;
+}
+.MuiFormControl-root{
+    width: 100%;
+    margin-bottom: 45px !important;
+}
+.MuiFormLabel-root{
+    color: #959595 !important;
+    font-size: 17px !important;
+    
+}
+.text-white{
+    color: #fff !important;
+}
+
+.actions button.disabled{
+    background: #ccc;
+    color: #11111194;
+    cursor: default;
+}
+.generated-post{
+    padding: 0 25px;
+    position: relative;
+    border: 2px solid #ededed;
+    margin-right: 4%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    text-align: justify;
+    background: #fff;
+}
+.generated-post p{
+    font-size: 16px !important;
+}
+
+.actions ul {
+    display: flex;
+    justify-content: space-between;
+  }
+  .actions li .js-btn-prev{
+    background: #ccc;
+    color: #111;
+  }
+
+  .main {
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    margin-left: 7%;
+}
+
+.element-contain {
+    display: flex;
+    flex-direction: row;
+    flex-basis: auto;
+    flex-shrink: 1;
+    flex-grow: 0;
+}
+
+.element-contain .most-left {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    flex-basis: auto;
+    flex-shrink: 1;
+    flex-grow: 0;
+    padding-right: 35px;
+    row-gap:30px;
+}
+
+.element-contain .center {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-basis: auto;
+    flex-shrink: 1;
+    flex-grow: 0;
+    justify-content: center;
+}
+
+.element-contain .most-right {
+    width: 26%;
+    display: flex;
+    flex-direction: column;
+    flex-basis: auto;
+    flex-shrink: 1;
+    flex-grow: 0;
+    justify-content: center;
+}
+
+.element-contain .center .main-title .title {
+    color: #121212;
+    font-family: "Kanit", Sans-serif;
+    font-size: 110px;
+    font-weight: 600;
+    line-height: 1em;
+}
+
+.element-contain .left-inner-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.element-contain .left-inner-container .img-container {
+    height: 100%;
+    width: 100%;
+    transform: translateX(-55px) !important;
+    transform: translateY(15px);
+}
+
+.element-contain .left-inner-container .img-container img {
+    height: auto;
+    width: 100%;
+}
+
+.element-contain .center .main-desc {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 33px;
+}
+
+.element-contain .center .main-desc .left {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    margin-top: 20px;
+}
+
+.element-contain .center .main-desc .divider {
+    border-bottom: 1px solid #D60000;
+    width: 100%;
+}
+.main-title .title .divider{
+  width: 105px;
+  height: 1px;
+  display: inline-block;
+  background: #D60000;
+  margin: 0 30px;
+}
+.element-contain .center .main-desc .text {
+    font-family: "Kanit", Sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.42em;
+    color: #666666;
+}
+
+.most-right .single-img {
+    display: flex;
+    align-self: flex-end;
+    width: 100%;
+    padding-top: 25px;
+    flex-direction: column;
+}
+
+.most-right .single-img img {
+    width: 100%;
+    height: auto;
+}
+
+.most-left .bottom-inner {
+    display: flex;
+    align-self: flex-end;
+    width: 100%;
+    justify-content: center;
+    height: 100%;
+    
+}
+
+.most-left .bottom-inner .single-img {
+    height: 100%;
+}
+
+.most-left .bottom-inner .single-img img {
+    height: auto;
+    width: 100%;
+}
+.main-btn svg{
+    width: 25px;
+}
+.main-btn{
+    display: flex;
+    justify-content: center;
+}
+.main-btn a{
+    flex-direction: row;
+    display: inline-flex;
+    gap: 10px;
+    font-family: "Kanit", Sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 1.3em;
+    fill: #121212;
+    color: #121212;
+    transition: all .3s;
+    position: relative;
+    align-items: anchor-center;
+}
+.main-btn a:hover{
+    color: #D60000 !important;
+    fill: #D60000;
+}
+.main-btn a:hover:after{
+    background-color:#D60000 ;
+    width: 0%;
+}
+.main-btn a:after{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    background-color: #1c1d20;
+    transition: all .3s;
+}
+.btn-signin a{
+    font-size: 20px;
+    gap: 15px;
+}
+.btn-signin a svg{
+    width: 18px;
+}
+.widget{
+    display: flex;
+    justify-content: end;
+    position: absolute;
+    right: 22%;
+}
+.css-1wk5k0m-JoyCardContent-root{
+    justify-content: center;
+}
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .main {
+        flex-direction: column;
+        height: auto;
+        margin-left: 25px;
+        margin-right: 25px;
+        align-items: center;
+    }
+    .widget{
+        top: 32%;
+        right: 10%;
+    }
+    .main-title .title, .main-desc .text p{
+        text-align: left;
+    }
+    .element-contain .most-right{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    .element-contain {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .element-contain .most-left{
+        width: 75%;
+        flex-direction: row;
+        order: 2;
+    }
+    .element-contain .center{
+        width: 100%;
+        margin-top: 30px;
+    }
+    .element-contain .center .main-desc .left{
+        display: none;
+    }
+    .element-contain .center .main-title .title {
+        font-size: 80px;
+    }
+    .sm-fixed{
+        position: relative !important;
+    }
+    .element-contain .left-inner-container{
+        min-height: 550px;
+    }
+    .most-left .bottom-inner{
+        justify-content: left;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .element-contain .center .main-title .title {
+        font-size: 50px;
+    }
+    .element-contain .most-left{
+        flex-direction: column;
+    }
+    .element-contain .most-right{
+        width: 45%;
+    }
+
+    .element-contain .center .main-desc {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .element-contain .left-inner-container{
+        min-height: auto;
+    }
+}
+@media (max-width: 550px){
+    .element-contain .most-right{
+        bottom: 10%;
+    }
+}
+@media (max-width: 480px) {
+    .element-contain{
+        align-items: flex-start;
+    }
+    .element-contain .left-inner-container .img-container{
+        transform: unset !important;
+    }
+    .logo_landing{
+        width: 165px !important;
+    }
+    .main-btn a{
+        font-size: 20px;
+    }
+    
+    .btn-signin a{
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 382px) {
+    .element-contain .most-right{
+        bottom: 0;
+        z-index: -1;
+    }
+}
+@media (max-width: 768px) {
+    .center {
+      order: -1;
+      text-align: center;
+      margin-top: 90px; 
+    }
+  
+    .main-title {
+      margin-top: 20px; /* Heading ko aur adjust karne ke liye */
+    }
+  
+    .main-desc {
+      margin-top: -10px; /* Heading ke text ko aur kareeb laane ke liye */
+    }
+    .main-title .title .divider{
+     display: none;
+    }
+  }
+
+  .woocomerce__signin {
+    max-width: 690px;
+    margin: 150px auto 200px;
+  }
+  
+  @media (max-width: 1200px) {
+    .woocomerce__signin {
+      margin: 120px auto;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .woocomerce__signin {
+      margin: 100px auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .woocomerce__signin {
+      margin: 60px auto;
+    }
+  }
+  
+  .woocomerce__signin-titlewrap {
+    padding-bottom: 30px;
+  }
+  
+  .woocomerce__signin-title {
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.8;
+    color: var(--black-2);
+    display: block;
+  }
+  
+  .woocomerce__signin-dis {
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: gray;
+  }
+  
+  .woocomerce__signin-dis span {
+    font-weight: 500;
+    color: black;
+  }
+  
+  .woocomerce__signin-field {
+    margin-bottom: 25px;
+  }
+  
+  .woocomerce__signin-field label {
+  
+    display: block;
+    padding-bottom: 7px;
+    font-size: 14px;
+    font-family: "Kanit", sans-serif;
+  }
+  
+  .woocomerce__signin-field input {
+    width: 100%;
+    border: 1px solid #E9E9E9;
+    height: 50px;
+    padding: 15px;
+    padding-right: 46px;
+  }
+  
+  .woocomerce__signin-field input::placeholder {
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #999999;
+  }
+  
+  .woocomerce__signin-field input:focus {
+    outline: 0;
+  }
+  
+  .woocomerce__signin-passwordfield {
+    position: relative;
+  }
+  .woocomerce__signin-passwordfield .eye svg{
+    color: #939292;
+  }
+  .woocomerce__signin-view {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .woocomerce__signin-checkbox input {
+    appearance: none;
+  }
+  
+  .woocomerce__signin-checkbox input:checked ~ label::after {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .woocomerce__signin-checkbox label {
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    color: black;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+  }
+  
+  .woocomerce__signin-checkbox label::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border: 1px solid #999999;
+    top: -3px;
+    left: 0;
+    position: absolute;
+  }
+  
+  .woocomerce__signin-checkbox label::after {
+    content: "";
+    position: absolute;
+    background-image: url(../imgs/woocomerce/check-sign.png);
+    top: 3px;
+    left: 6px;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    border-radius: 50px;
+    opacity: 0;
+    visibility: hidden;
+    background-repeat: no-repeat;
+    transition: 0.5s;
+  }
+  
+  .woocomerce__signin-btnwrap {
+    padding-top: 30px;
+    padding-bottom: 50px;
+  }
+  
+  .woocomerce__signin-btnwrap.signupbtn {
+    padding-top: 8px;
+    padding-bottom: 30px;
+  }
+  
+  .woocomerce__signin-resetbuton {
+    padding-top: 5px;
+  }
+  
+  .woocomerce__signin-formfooter p {
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    color: gray;
+    padding-bottom: 10px;
+  }
+  
+  .woocomerce__signin-formfooter p a {
+    color: black;
+    text-decoration: underline;
+  }
+  
+  .woocomerce__signin-formfooter p a:hover {
+    color: gray;
+  }
+  
+  .woocomerce__signin-formfooter a {
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    color: gray;
+    transition: 0.5s;
+  }
+  
+  .woocomerce__signin-formfooter a:hover {
+    color: black;
+  }
+  
+  .woocomerce__checkout-submitbtn{
+    background:#0000FF;
+    color: #fff;
+    font-family: "Kanit", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    display: block;
+    width: 100%;
+    padding: 18px 0;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+  }
+  .woocomerce__checkout-submitbtn:hover{
+    border-color: #0000FF;
+    color: #0000FF;
+    background:#fff;
+  }
+  .woocomerce__signin-wrapper{
+    padding: 25px 55px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 3px 5px 9px 1px #e3e3e3;
+  }
+  @media (max-width: 550px){
+    .woocomerce__signin-wrapper{
+        padding:25px;
+    }
+}
+.billing-details{
+  background-color: #2f3146 !important;
+  color: #fff !important;
+}
+.main-btn .logout{
+  font-size: 18px;
+}
+.main-btn .logout svg{
+  width: 18px;
+}
+
+@keyframes blinkingText {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.blinking { animation: blinkingText 1.5s infinite; }
+.actions { display: flex; justify-content: space-between; align-items: center; margin-top: 25px; }
+.step-box-content.active { border: 2px solid #0014FF; border-radius: 4px; }
+.toolbar button {
+  margin-right: 8px;
+}
+.blinking_signin {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.5;
+  }
+}
+.css-122ge0r-JoyButton-root{
+  background-color: #0014FF !important;
+  color: #fff !important;
+  border: 1px solid #0014FF !important;
+  transition: 0.6s;
+}
+.css-122ge0r-JoyButton-root:hover{
+  background-color: #fff !important;
+  color: #0014FF !important;
+}
+
+/* ================ new ========================  */
+/* Container & Overall Layout */
+.generate-post-container {
+  padding: 30px 0;
+  width: 80%;
+}
+
+/* Editor Section */
+.editor-container {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Preview Card */
+.preview-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* Preview Header (User Info) */
+.preview-header {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.preview-header h6 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.preview-header small {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* Preview Body */
+.preview-body {
+  padding: 15px;
+  min-height: 150px;
+}
+
+/* Preview Footer (Action Buttons) */
+.preview-footer {
+  padding: 10px 15px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #eee;
+}
+
+.preview-footer button {
+  font-size: 0.9rem;
+  color: #333;
+  border: none;
+  background: transparent;
+}
+
+.preview-footer button:hover {
+  text-decoration: underline;
+}
+.ql-toolbar.ql-snow{
+  border: 0 !important;
+  border-bottom: 1px solid #ccc !important;
+}
+.ql-container.ql-snow{
+  border: 0 !important;
+}
+.editor-container .ql-container {
+  min-height: 285px;
+}
+
+.sidebar-container {
+  width: 100%;               /* Adjust the width as needed */
+  background-color: #fff;
+  border-right: 1px solid #ddd;
+  height: auto;              /* Full viewport height */
+  overflow-y: auto;           /* Scrollable sidebar */
+  overflow-x: hidden;
+}
+
+/* Customize the scrollbar (WebKit-based browsers) */
+.sidebar-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.sidebar-container::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 3px;
+}
+
+/* Navigation links */
+.nav-links ul li {
+  cursor: pointer;
+}
+.nav-links ul li.active {
+  font-weight: 600;
+}
+
+/* If you need to style the "New post" button differently */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* If you want a custom look for + New buttons in schedule list */
+.schedule-list .btn-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.schedule-list .btn-link:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 992px) {
+  .steps-area{
+    width: 45% !important;
+  }
+}
+@media screen and (max-width: 719.98px) {
+  .steps-area{
+    width: auto !important;
+    border-left: 0 !important;
+    height: auto;
+    position: absolute;
+    box-shadow: none !important;
+  }
+}
+
+.trending_topics_list{
+  max-height: 410px;
+  overflow-y: auto;
+  border-bottom: 1px solid #f1f1f1;
+}
+.generated_post p{
+  font-size: 18px;
+}
+.mantine-1qycoz3 .ql-editor{
+  max-height: 100%;
+  overflow-y: auto;
+  scrollbar-width: none;
+  min-height: 90px;
+}
+.mantine-1qycoz3 .ql-editor::-webkit-scrollbar{
+  display: none; 
+}
+
+.post-actions span{
+  color: #000000bf;
+  cursor: pointer;
+  padding:10px;
+  border-radius: 6px;
+}
+.post-actions span:hover{
+  background-color: #8c8c8c1a;
+}
+.post-preview p, .mantine-1qycoz3 p{
+  text-align: left !important;
+}
+.post-schedule-actions{
+  justify-content: end;
+  align-items: center;
+  column-gap: 3px;
+}
+.post-schedule-actions .fa-clock{
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: unset !important;
+}
+.post-schedule-actions .clock{
+  padding: 0 !important;
+  color: unset !important;
+}
+ .post{
+    background-color: #0000FF;   
+    color: #ffffff;
+    border-radius: 20px;
+    border: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+}
+.post:focus{
+  color: #fff;
+}
+ .redo{
+    background-color: #D60000;   
+    color: #ffffff;
+    border-radius: 20px;
+    border: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    margin-right: auto;
+}
+.redo:focus{
+  color: #fff;
+}
+.post-actions .text:hover{
+  background-color: unset !important;
+}
+@media screen and (max-width:450px) {
+  .post-actions .text{
+    display: none;
+  }
+}
+
+.postModal{
+  scrollbar-width: none;
+}
+.postModal::-webkit-scrollbar{
+  display: none; 
+}
+.post-review-content-modal{
+  max-height: 250px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.post-review-content-modal::-webkit-scrollbar{
+  display: none; 
+}
+.text-destructive{
+  color: #D60000;
+}
+.signup-form .border-destructive{
+  border-color: #D60000 !important;
+}
+.signup-form .border:focus{
+  border-color: #0000FF !important;
+}
+

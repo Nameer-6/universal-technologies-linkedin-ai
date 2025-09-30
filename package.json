@@ -1,0 +1,27 @@
+{
+  "name": "universal-technologies-linkedin-ai",
+  "version": "1.0.0",
+  "description": "Universal Technologies LinkedIn AI Agent - Full Stack Application",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && php artisan serve",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "npm run build:frontend",
+    "build:frontend": "cd frontend && npm run build",
+    "vercel-build": "cd frontend && npm run vercel-build",
+    "install:backend": "cd backend && composer install",
+    "install:frontend": "cd frontend && npm install",
+    "install:all": "npm run install:backend && npm run install:frontend",
+    "test:backend": "cd backend && php artisan test",
+    "test:frontend": "cd frontend && npm run test",
+    "lint:frontend": "cd frontend && npm run lint",
+    "deploy:vercel": "vercel --prod"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}

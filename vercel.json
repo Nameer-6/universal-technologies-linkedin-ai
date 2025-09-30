@@ -1,0 +1,39 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/public/index.php",
+      "use": "@vercel/php"
+    },
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "../backend/public/build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/build/(.*)",
+      "dest": "/build/$1"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/backend/public/index.php"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/backend/public/index.php"
+    }
+  ],
+  "env": {
+    "APP_ENV": "production",
+    "APP_DEBUG": "false"
+  },
+  "functions": {
+    "backend/public/index.php": {
+      "runtime": "@vercel/php@2.0.0"
+    }
+  }
+}
