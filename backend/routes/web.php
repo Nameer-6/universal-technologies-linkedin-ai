@@ -115,7 +115,6 @@ Route::get('/api/users/growth', [AdminController::class, 'growthByDate']);
 Route::get('/api/users/recent', [AdminController::class, 'recentUsers']);
 Route::get('/api/linkedin-post-stats', [LinkedinAuthcontroller::class, 'getLinkedinPostStats']);
 Route::get('/api/multi-person-engagement', [LinkedinAuthcontroller::class, 'getMultiPersonEngagement']);
-Route::post('/api/login', [AuthController::class, 'login'])->middleware('web');
 
 
 

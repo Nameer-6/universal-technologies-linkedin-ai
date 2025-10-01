@@ -48,6 +48,7 @@ Route::post('/signup-free', function (\Illuminate\Http\Request $request) {
 });
 
 Route::post('/signup', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
 Route::get('/checkout/success', [AuthController::class, 'checkoutSuccess'])
     ->name('checkout.success');
 
