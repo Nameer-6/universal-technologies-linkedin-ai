@@ -14,39 +14,6 @@ Route::get('/health', function () {
 });
 
 
-// Temporary signup endpoint to recreate test users
-Route::post('/signup-free', function (\Illuminate\Http\Request $request) {
-    try {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
-        
-        $user = \App\Models\User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => bcrypt($validated['password']),
-            'credits' => 50 // Give some free credits
-        ]);
-        
-        return response()->json([
-            'success' => true,
-            'message' => 'Account created successfully! You can now log in.',
-            'user' => $user->only(['id', 'name', 'email', 'credits'])
-        ]);
-    } catch (\Illuminate\Validation\ValidationException $e) {
-        return response()->json([
-            'error' => 'Validation failed',
-            'errors' => $e->errors()
-        ], 422);
-    } catch (\Exception $e) {
-        return response()->json([
-            'error' => $e->getMessage()
-        ], 500);
-    }
-});
-
 Route::post('/signup', [AuthController::class, 'register']);
 Route::get('/checkout/success', [AuthController::class, 'checkoutSuccess'])
     ->name('checkout.success');
