@@ -15,15 +15,25 @@ class LinkedinAuthcontroller extends Controller
     protected $linkedin_client_secret = "your_linkedin_client_secret";
     protected $linkedin_redirect_uri  = "http://localhost:8000/linkedin-callback";
 
-    public function linkedinLogin()
+    public function linkedinLogin(Request $request)
     {   
         // Development mode: Create mock LinkedIn connection
         if (config('app.env') === 'local' || config('app.debug') === true) {
             Log::info("Development mode: Creating mock LinkedIn profile");
             
-            $user = Auth::user();
-            if (!$user) {
-                return response()->json(["error" => "Not logged in"], 401);
+            // Check for temporary token in Authorization header
+            $authHeader = $request->header('Authorization');
+            if ($authHeader && str_starts_with($authHeader, 'Bearer temp_token_')) {
+                $token = str_replace('Bearer temp_token_', '', $authHeader);
+                $user = \App\Models\User::find($token);
+                if (!$user) {
+                    return response()->json(["error" => "Invalid token"], 401);
+                }
+            } else {
+                $user = Auth::user();
+                if (!$user) {
+                    return response()->json(["error" => "Not logged in"], 401);
+                }
             }
 
             // Create mock LinkedIn profile data
