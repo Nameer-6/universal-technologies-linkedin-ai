@@ -117,6 +117,39 @@ Route::get('/api/linkedin-post-stats', [LinkedinAuthcontroller::class, 'getLinke
 Route::get('/api/multi-person-engagement', [LinkedinAuthcontroller::class, 'getMultiPersonEngagement']);
 Route::post('/api/login', [AuthController::class, 'login'])->middleware('web');
 
+// Temporary signup endpoint to recreate test users
+Route::post('/api/signup-free', function (\Illuminate\Http\Request $request) {
+    try {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+        
+        $user = \App\Models\User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => bcrypt($validated['password']),
+            'credits' => 50 // Give some free credits
+        ]);
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Account created successfully! You can now log in.',
+            'user' => $user->only(['id', 'name', 'email', 'credits'])
+        ]);
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        return response()->json([
+            'error' => 'Validation failed',
+            'errors' => $e->errors()
+        ], 422);
+    } catch (\Exception $e) {
+        return response()->json([
+            'error' => $e->getMessage()
+        ], 500);
+    }
+});
+
 Route::post('/api/password/email', [PasswordResetLinkController::class, 'sendResetLinkEmail']);
 Route::post('/api/password/reset', [NewPasswordController::class, 'reset']);
 Route::middleware(['web'])->group(function () {
