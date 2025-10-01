@@ -12,7 +12,6 @@ cmds = [
 [phases.build]
 cmds = [
   "cd backend && php artisan config:cache",
-  "cd backend && php artisan route:cache",
   "cd backend && php artisan migrate --force",
   "cd backend && mkdir -p storage/app/public && mkdir -p storage/framework/cache && mkdir -p storage/framework/sessions && mkdir -p storage/framework/views && mkdir -p storage/logs && chmod -R 775 storage"
 ]
