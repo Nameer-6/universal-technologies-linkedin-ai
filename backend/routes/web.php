@@ -159,7 +159,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/api/profile', [LinkedinAuthcontroller::class, 'profile']);
     Route::get('/api/linkedin-login', [LinkedinAuthcontroller::class, 'linkedinLogin']);
     Route::get('/api/check-linkedin', [LinkedinAuthcontroller::class, 'checkLinkedInConnection']);
-    Route::post('/api/generate-options', [NewsController::class, 'generateOptions']);
-    Route::post('/api/generate-content', [NewsController::class, 'generateContent']); // New GPT content generation
 });
 
