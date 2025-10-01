@@ -1,25 +1,15 @@
-import laravel from 'laravel-vite-plugin';
 import path from 'path';
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-    plugins: [
-        laravel({
-            input: [
-                'resources/js/index.jsx', // Entry for your React app
-                'resources/css/app.css', // CSS entry point
-            ],
-            refresh: true,
-            valetTls: false,
-            publicDirectory: '../backend/public', // Point to backend's public directory
-        }),
-    ],
+    plugins: [react()],
     server: {
         proxy: {
             '/api': {
-                target: 'http://localhost:8000',
+                target: 'https://universal-technologies-linkedin-ai-production.up.railway.app',
                 changeOrigin: true,
-                secure: false,
+                secure: true,
             },
         },
     },
@@ -29,7 +19,7 @@ export default defineConfig({
         },
     },
     build: {
-        outDir: '../backend/public/build', // Output directory (build to parent's backend/public)
+        outDir: 'dist', // Standard Vercel output directory
         manifest: true,         // Generate manifest.json
         rollupOptions: {
             input: {
