@@ -350,8 +350,22 @@ const HomeThree = () => {
       }
       
       // In development mode, the backend creates a mock LinkedIn profile and redirects
-      // Just redirect to the LinkedIn login endpoint which will handle the mock creation
-      window.location.href = "/api/linkedin-login";
+      // Make API call to LinkedIn login endpoint
+      const response = await fetch("/api/linkedin-login", {
+        method: "GET",
+        headers: { 
+          "Accept": "application/json",
+          'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
+        },
+        credentials: "include",
+      });
+      
+      if (response.ok) {
+        // If successful, redirect to dashboard
+        window.location.href = "/linkedin-ai";
+      } else {
+        throw new Error("LinkedIn login failed");
+      }
     } catch (error) {
       console.error("LinkedIn login error:", error);
       toast.error("Error connecting to LinkedIn");
