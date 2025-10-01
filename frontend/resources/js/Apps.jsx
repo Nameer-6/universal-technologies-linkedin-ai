@@ -36,6 +36,13 @@ function useSessionAuth() {
       return;
     }
     
+    // Check if it's a temporary token format
+    if (token.startsWith('temp_token_')) {
+      console.log('✅ Using temporary token, skipping whoami check');
+      if (mounted) setState({ loading: false, authed: true });
+      return;
+    }
+
     // Use token for authentication  
     axios
       .get("/api/whoami", { 
