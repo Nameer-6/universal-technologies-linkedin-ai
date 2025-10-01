@@ -13,6 +13,27 @@ Route::get('/health', function () {
     ]);
 });
 
+// Temporary endpoint to create test user
+Route::post('/create-test-user', function () {
+    try {
+        $user = \App\Models\User::create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => bcrypt('password123'),
+            'credits' => 100
+        ]);
+        
+        return response()->json([
+            'success' => true,
+            'user' => $user->only(['id', 'name', 'email', 'credits'])
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'error' => $e->getMessage()
+        ], 500);
+    }
+});
+
 Route::post('/signup', [AuthController::class, 'register']);
 Route::get('/checkout/success', [AuthController::class, 'checkoutSuccess'])
     ->name('checkout.success');
