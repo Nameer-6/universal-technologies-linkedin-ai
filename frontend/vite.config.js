@@ -22,10 +22,7 @@ export default defineConfig({
         outDir: 'dist', // Standard Vercel output directory
         manifest: true,         // Generate manifest.json
         rollupOptions: {
-            input: {
-                main: 'resources/js/index.jsx',
-                styles: 'resources/css/app.css', // Explicitly define the CSS input
-            },
+            input: 'index.html', // Use the HTML file as entry point
         },
     },
 });
