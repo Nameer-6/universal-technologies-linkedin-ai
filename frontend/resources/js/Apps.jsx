@@ -86,13 +86,39 @@ function useSessionAuth() {
 
 function ProtectedRoute({ children }) {
   const { loading, authed } = useSessionAuth();
-  if (loading) return null; // or a spinner
+  if (loading) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh',
+        fontSize: '18px',
+        color: '#666'
+      }}>
+        Loading...
+      </div>
+    );
+  }
   return authed ? children : <Navigate to="/" replace />;
 }
 
 function PublicRoute({ children }) {
   const { loading, authed } = useSessionAuth();
-  if (loading) return null; // or a spinner
+  if (loading) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh',
+        fontSize: '18px',
+        color: '#666'
+      }}>
+        Loading...
+      </div>
+    );
+  }
   return authed ? <Navigate to="/linkedin-ai" replace /> : children;
 }
 
