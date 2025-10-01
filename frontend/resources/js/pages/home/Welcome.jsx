@@ -59,11 +59,11 @@ function Welcome() {
       return;
     }
 
-    // 6) Verify reCAPTCHA token exists
-    if (!recaptchaToken) {
-      setError("Please complete the reCAPTCHA.");
-      return;
-    }
+    // 6) reCAPTCHA temporarily disabled for deployment
+    // if (!recaptchaToken) {
+    //   setError("Please complete the reCAPTCHA.");
+    //   return;
+    // }
 
     setLoading(true);
     setError("");
@@ -76,8 +76,8 @@ function Welcome() {
           name,
           email,
           promo_code: promoCode.trim(),   // ← send promo code to backend
-          password,
-          recaptcha_token: recaptchaToken
+          password
+          // recaptcha_token: recaptchaToken // Temporarily disabled
         })
       });
 
@@ -257,14 +257,14 @@ function Welcome() {
               </div>
             </div>
 
-            {/* reCAPTCHA widget */}
-            <div className="mb-4">
+            {/* reCAPTCHA widget - temporarily disabled for deployment */}
+            {/* <div className="mb-4">
               <ReCAPTCHA
                 sitekey="6LfVcQErAAAAAIim_YPPu2Vu2jSAr-VxjAgTEcon"
                 onChange={(token) => setRecaptchaToken(token)}
                 ref={recaptchaRef}
               />
-            </div>
+            </div> */}
 
             <div className="mb-4">
               <button

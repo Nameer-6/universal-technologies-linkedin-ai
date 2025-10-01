@@ -56,10 +56,11 @@ const SignupForm = () => {
       return;
     }
 
-    if (!recaptchaToken) {
-      setError('Please complete the reCAPTCHA.');
-      return;
-    }
+    // reCAPTCHA temporarily disabled for deployment
+    // if (!recaptchaToken) {
+    //   setError('Please complete the reCAPTCHA.');
+    //   return;
+    // }
 
     setLoading(true);
     setError('');
@@ -68,7 +69,7 @@ const SignupForm = () => {
       const response = await fetch('/api/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password, recaptcha_token: recaptchaToken })
+        body: JSON.stringify({ name, email, password })
       });
 
       const data = await response.json();
@@ -196,13 +197,14 @@ const SignupForm = () => {
                         />
                       </Stack>
 
-                      <div className="mb-3">
+                      {/* reCAPTCHA widget - temporarily disabled for deployment */}
+                      {/* <div className="mb-3">
                         <ReCAPTCHA
                           sitekey="6LfVcQErAAAAAIim_YPPu2Vu2jSAr-VxjAgTEcon"
                           onChange={token => setRecaptchaToken(token)}
                           ref={recaptchaRef}
                         />
-                      </div>
+                      </div> */}
 
                       <Button
                         variant="solid"

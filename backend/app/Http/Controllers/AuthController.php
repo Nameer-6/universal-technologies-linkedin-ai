@@ -37,24 +37,26 @@ class AuthController extends Controller
             'name'            => 'required|string|max:255',
             'email'           => 'required|email|unique:users,email',
             'password'        => 'required|string|min:6',
-            'recaptcha_token' => 'required|string',
+            'recaptcha_token' => 'nullable|string', // Made optional for deployment
             'promo_code'      => 'nullable|string',
         ]);
 
-        // 1) Verify reCAPTCHA
-        $recaptchaResponse = Http::asForm()->post(
-            'https://www.google.com/recaptcha/api/siteverify',
-            [
-                'secret'   => config('services.recaptcha.secret'),
-                'response' => $validated['recaptcha_token'],
-                'remoteip' => $request->ip(),
-            ]
-        );
-        $recaptchaResult = $recaptchaResponse->json();
+        // 1) Verify reCAPTCHA (only if token provided)
+        if (!empty($validated['recaptcha_token'])) {
+            $recaptchaResponse = Http::asForm()->post(
+                'https://www.google.com/recaptcha/api/siteverify',
+                [
+                    'secret'   => config('services.recaptcha.secret'),
+                    'response' => $validated['recaptcha_token'],
+                    'remoteip' => $request->ip(),
+                ]
+            );
+            $recaptchaResult = $recaptchaResponse->json();
 
-        if (empty($recaptchaResult['success'])) {
-            Log::warning("reCAPTCHA failed.", $recaptchaResult);
-            return response()->json(['error' => 'reCAPTCHA verification failed.'], 400);
+            if (empty($recaptchaResult['success'])) {
+                Log::warning("reCAPTCHA failed.", $recaptchaResult);
+                return response()->json(['error' => 'reCAPTCHA verification failed.'], 400);
+            }
         }
 
         // 2) Cache registration data for 30 minutes
