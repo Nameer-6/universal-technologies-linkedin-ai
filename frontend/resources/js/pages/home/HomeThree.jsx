@@ -128,7 +128,8 @@ const HomeThree = () => {
           credentials: "include",
           headers: {
             'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
           }
         });
         
@@ -169,7 +170,8 @@ const HomeThree = () => {
             credentials: "include",
             headers: {
               'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
             }
           });
           if (!checkRes.ok) throw new Error("Failed to check LinkedIn connection");
@@ -257,6 +259,7 @@ const HomeThree = () => {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
+          "Accept": "application/json",
           'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
         },
         credentials: "include",
@@ -369,7 +372,10 @@ const HomeThree = () => {
 
       const res = await fetch("/api/generate-post", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
         credentials: "include",
         body: JSON.stringify({
           topic,
