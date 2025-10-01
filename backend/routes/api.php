@@ -14,6 +14,23 @@ Route::get('/health', function () {
     ]);
 });
 
+// Test database connection
+Route::get('/test-db', function () {
+    try {
+        $userCount = \App\Models\User::count();
+        return response()->json([
+            'status' => 'ok',
+            'user_count' => $userCount,
+            'message' => 'Database connection working'
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Database error: ' . $e->getMessage()
+        ], 500);
+    }
+});
+
 // Temporary signup endpoint to recreate test users
 Route::post('/signup-free', function (\Illuminate\Http\Request $request) {
     try {
