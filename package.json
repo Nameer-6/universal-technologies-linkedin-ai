@@ -2,7 +2,7 @@
   "name": "universal-technologies-linkedin-ai",
   "version": "1.0.0",
   "description": "Universal Technologies LinkedIn AI Agent - Full Stack Application",
-  "type": "project",
+  "type": "module",
   "scripts": {
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:backend": "cd backend && php artisan serve",
