@@ -13,59 +13,6 @@ Route::get('/health', function () {
     ]);
 });
 
-// Temporary endpoint to create test user
-Route::post('/create-test-user', function () {
-    try {
-        $user = \App\Models\User::create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => bcrypt('password123'),
-            'credits' => 100
-        ]);
-        
-        return response()->json([
-            'success' => true,
-            'user' => $user->only(['id', 'name', 'email', 'credits'])
-        ]);
-    } catch (\Exception $e) {
-        return response()->json([
-            'error' => $e->getMessage()
-        ], 500);
-    }
-});
-
-// Temporary signup endpoint without payment
-Route::post('/signup-free', function (\Illuminate\Http\Request $request) {
-    try {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
-        
-        $user = \App\Models\User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => bcrypt($validated['password']),
-            'credits' => 50 // Give some free credits
-        ]);
-        
-        return response()->json([
-            'success' => true,
-            'message' => 'Account created successfully! You can now log in.',
-            'user' => $user->only(['id', 'name', 'email', 'credits'])
-        ]);
-    } catch (\Illuminate\Validation\ValidationException $e) {
-        return response()->json([
-            'error' => 'Validation failed',
-            'errors' => $e->errors()
-        ], 422);
-    } catch (\Exception $e) {
-        return response()->json([
-            'error' => $e->getMessage()
-        ], 500);
-    }
-});
 
 Route::post('/signup', [AuthController::class, 'register']);
 Route::get('/checkout/success', [AuthController::class, 'checkoutSuccess'])
