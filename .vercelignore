@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build artifacts
+frontend/dist/
+backend/public/build/
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Logs
+*.log
+storage/logs/
+
+# Cache
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+bootstrap/cache/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Testing
+tests/
+phpunit.xml
+
+# Documentation
+README.md
+*.md
