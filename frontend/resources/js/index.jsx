@@ -9,6 +9,11 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
+// Set API base URL for production
+if (window.location.hostname !== 'localhost') {
+  axios.defaults.baseURL = 'https://universal-technologies-linkedin-ai-production.up.railway.app';
+}
+
 // Pull CSRF token from meta tag (for web.php routes)
 const token = document
   .querySelector('meta[name="csrf-token"]')
