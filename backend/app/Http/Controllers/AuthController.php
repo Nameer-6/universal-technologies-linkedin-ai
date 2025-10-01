@@ -203,7 +203,15 @@ class AuthController extends Controller
         $request->session()->regenerate(); // protect against fixation
         
         $user = Auth::user();
-        $token = $user->createToken('web-app')->plainTextToken;
+        
+        try {
+            $token = $user->createToken('web-app')->plainTextToken;
+        } catch (\Exception $e) {
+            Log::error("Token creation failed: " . $e->getMessage());
+            return response()->json([
+                'error' => 'Authentication failed. Please try again.',
+            ], 500);
+        }
 
         return response()->json([
             'ok'   => true,
