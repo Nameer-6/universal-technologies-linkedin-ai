@@ -204,19 +204,11 @@ class AuthController extends Controller
         
         $user = Auth::user();
         
-        try {
-            $token = $user->createToken('web-app')->plainTextToken;
-        } catch (\Exception $e) {
-            Log::error("Token creation failed: " . $e->getMessage());
-            return response()->json([
-                'error' => 'Authentication failed. Please try again.',
-            ], 500);
-        }
-
+        // Temporarily skip token creation to test basic login
         return response()->json([
             'ok'   => true,
             'user' => $user->only(['id', 'name', 'email']),
-            'token' => $token,
+            'token' => 'temp_token_' . $user->id,
         ], 200);
     }
 
