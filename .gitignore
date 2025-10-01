@@ -68,3 +68,5 @@ backend/database/database.db
 # Temporary files
 tmp/
 temp/
+# Local Netlify folder
+.netlify
