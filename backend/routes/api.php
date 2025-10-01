@@ -48,7 +48,31 @@ Route::post('/signup-free', function (\Illuminate\Http\Request $request) {
 });
 
 Route::post('/signup', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+
+// Simple login endpoint for testing
+Route::post('/login', function (\Illuminate\Http\Request $request) {
+    try {
+        $validated = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+            'remember' => 'nullable|boolean',
+        ]);
+
+        $user = \App\Models\User::where('email', $validated['email'])->first();
+        
+        if (!$user || !\Illuminate\Support\Facades\Hash::check($validated['password'], $user->password)) {
+            return response()->json(['error' => 'Invalid credentials.'], 422);
+        }
+
+        return response()->json([
+            'ok' => true,
+            'user' => $user->only(['id', 'name', 'email']),
+            'token' => 'temp_token_' . $user->id,
+        ]);
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Server error: ' . $e->getMessage()], 500);
+    }
+});
 Route::get('/checkout/success', [AuthController::class, 'checkoutSuccess'])
     ->name('checkout.success');
 
