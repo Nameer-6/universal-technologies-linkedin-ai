@@ -124,7 +124,11 @@ const HomeThree = () => {
           return;
         }
         
-        const profileRes = await fetch("/api/profile", { 
+        const apiBaseUrl = window.location.hostname !== 'localhost' 
+          ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+          : '';
+        
+        const profileRes = await fetch(`${apiBaseUrl}/api/profile`, { 
           credentials: "include",
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -166,7 +170,7 @@ const HomeThree = () => {
 
         // Optional: verify LinkedIn connection
         try {
-          const checkRes = await fetch("/api/check-linkedin", { 
+          const checkRes = await fetch(`${apiBaseUrl}/api/check-linkedin`, { 
             credentials: "include",
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -226,7 +230,11 @@ const HomeThree = () => {
 
   const fetchScheduledPosts = async () => {
     try {
-      const res = await fetch("/api/user-scheduled-posts", { credentials: "include" });
+      const apiBaseUrl = window.location.hostname !== 'localhost' 
+        ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+        : '';
+      
+      const res = await fetch(`${apiBaseUrl}/api/user-scheduled-posts`, { credentials: "include" });
       const data = await res.json();
       if (res.ok) {
         setScheduledPosts(data.scheduled_posts || []);
@@ -255,7 +263,11 @@ const HomeThree = () => {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
 
-      const res = await fetch("/api/generate-options", {
+      const apiBaseUrl = window.location.hostname !== 'localhost' 
+        ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+        : '';
+      
+      const res = await fetch(`${apiBaseUrl}/api/generate-options`, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -351,7 +363,11 @@ const HomeThree = () => {
       
       // In development mode, the backend creates a mock LinkedIn profile and redirects
       // Make API call to LinkedIn login endpoint
-      const response = await fetch("/api/linkedin-login", {
+      const apiBaseUrl = window.location.hostname !== 'localhost' 
+        ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+        : '';
+      
+      const response = await fetch(`${apiBaseUrl}/api/linkedin-login`, {
         method: "GET",
         headers: { 
           "Accept": "application/json",
@@ -384,7 +400,11 @@ const HomeThree = () => {
       setUsedPersona("");
       setCustomPrompt("");
 
-      const res = await fetch("/api/generate-post", {
+      const apiBaseUrl = window.location.hostname !== 'localhost' 
+        ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+        : '';
+      
+      const res = await fetch(`${apiBaseUrl}/api/generate-post`, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -506,7 +526,11 @@ const HomeThree = () => {
         formData.append("media_type", "image/jpeg");
       }
 
-      const res = await fetch("/api/linkedin-post", {
+      const apiBaseUrl = window.location.hostname !== 'localhost' 
+        ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+        : '';
+      
+      const res = await fetch(`${apiBaseUrl}/api/linkedin-post`, {
         method: "POST",
         credentials: "include",
         body: formData,
@@ -560,7 +584,11 @@ const HomeThree = () => {
     } else if (!mediaData) {
       formData.append("remove_media", "true");
     }
-    fetch("/api/scheduled-posts/update", {
+    const apiBaseUrl = window.location.hostname !== 'localhost' 
+  ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+  : '';
+
+fetch(`${apiBaseUrl}/api/scheduled-posts/update`, {
       method: "POST",
       credentials: "include",
       body: formData,
@@ -645,7 +673,11 @@ const HomeThree = () => {
         formData.append("media_type", "image/jpeg");
       }
 
-      const res = await fetch("/api/linkedin-post", {
+      const apiBaseUrl = window.location.hostname !== 'localhost' 
+        ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+        : '';
+      
+      const res = await fetch(`${apiBaseUrl}/api/linkedin-post`, {
         method: "POST",
         credentials: "include",
         body: formData,
@@ -678,7 +710,11 @@ const HomeThree = () => {
     try {
       const formData = new FormData();
       formData.append("id", postId);
-      const res = await fetch("/api/scheduled-posts/delete", {
+      const apiBaseUrl = window.location.hostname !== 'localhost' 
+        ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+        : '';
+      
+      const res = await fetch(`${apiBaseUrl}/api/scheduled-posts/delete`, {
         method: "POST",
         credentials: "include",
         body: formData,
