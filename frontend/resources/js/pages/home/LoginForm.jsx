@@ -35,8 +35,12 @@ function LoginForm() {
     }
 
     try {
+      const apiBaseUrl = window.location.hostname !== 'localhost' 
+        ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+        : '';
+      
       const response = await axios.post(
-        "/api/login",
+        `${apiBaseUrl}/api/login`,
         { email, password, remember },
         { withCredentials: true }
       );

@@ -137,7 +137,11 @@ function CheckoutUI() {
 
     try {
       // 5) POST to backend
-      const response = await fetch('/api/signup', {
+      const apiBaseUrl = window.location.hostname !== 'localhost' 
+        ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+        : '';
+      
+      const response = await fetch(`${apiBaseUrl}/api/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
