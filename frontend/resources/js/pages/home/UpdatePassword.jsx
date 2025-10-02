@@ -44,7 +44,11 @@ function UpdatePasswordForm() {
     setLoading(true);
 
     try {
-      const response = await fetch("/api/update-password", {
+      const apiBaseUrl = window.location.hostname !== 'localhost' 
+        ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+        : '';
+      
+      const response = await fetch(`${apiBaseUrl}/api/update-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

@@ -11,7 +11,11 @@ export function CreditsProvider({ children }) {
   const fetchCredits = useCallback(async () => {
     setLoadingCredits(true);
     try {
-      const res = await fetch("/api/user/credits", { credentials: "include" });
+      const apiBaseUrl = window.location.hostname !== 'localhost' 
+        ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+        : '';
+      
+      const res = await fetch(`${apiBaseUrl}/api/user/credits`, { credentials: "include" });
       const data = await res.json();
       setCredits(data.credits ?? null);
     } catch {

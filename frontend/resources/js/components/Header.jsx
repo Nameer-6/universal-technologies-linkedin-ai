@@ -23,7 +23,11 @@ const Header = () => {
                     return;
                 }
                 
-                const res = await fetch("/api/profile", { 
+                const apiBaseUrl = window.location.hostname !== 'localhost' 
+        ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+        : '';
+      
+      const res = await fetch(`${apiBaseUrl}/api/profile`, { 
                     credentials: 'include',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -64,7 +68,11 @@ const Header = () => {
         try {
             // Remove token from localStorage
             localStorage.removeItem('auth_token');
-            await fetch("/api/logout", { method: "POST", credentials: "include" });
+            const apiBaseUrl = window.location.hostname !== 'localhost' 
+          ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+          : '';
+        
+        await fetch(`${apiBaseUrl}/api/logout`, { method: "POST", credentials: "include" });
             toast.success("Logged out!");
             navigate("/login");
         } catch (err) {

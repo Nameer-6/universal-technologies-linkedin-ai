@@ -60,7 +60,11 @@ const PdfGenerator = () => {
           return;
         }
         
-        const res = await fetch("/api/profile", { 
+        const apiBaseUrl = window.location.hostname !== 'localhost' 
+        ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+        : '';
+      
+      const res = await fetch(`${apiBaseUrl}/api/profile`, { 
           credentials: "include",
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -83,7 +87,7 @@ const PdfGenerator = () => {
   // 2. Fetch scheduled posts
   const fetchScheduledPosts = async () => {
     try {
-      const res = await fetch("/api/user-scheduled-posts", {
+      const res = await fetch(`${apiBaseUrl}/api/user-scheduled-posts`, {
         credentials: "include",
       });
       const data = await res.json();
@@ -138,7 +142,7 @@ const PdfGenerator = () => {
     setSelectedTopic(null);
     setSlides([]);
     try {
-      const res = await fetch("/api/generate-news", {
+      const res = await fetch(`${apiBaseUrl}/api/generate-news`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ category: topics, country }),
@@ -168,7 +172,7 @@ const PdfGenerator = () => {
 
     try {
       // This endpoint returns AI-generated slides for the chosen topic
-      const res = await fetch("/api/generate-ppt", {
+      const res = await fetch(`${apiBaseUrl}/api/generate-ppt`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

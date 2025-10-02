@@ -127,7 +127,11 @@ const EditScheduledPost = () => {
   // Fetch scheduled posts to pass into the Schedule component
   const fetchScheduledPosts = async () => {
     try {
-      const res = await fetch("/api/user-scheduled-posts", { credentials: "include" });
+      const apiBaseUrl = window.location.hostname !== 'localhost' 
+        ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+        : '';
+      
+      const res = await fetch(`${apiBaseUrl}/api/user-scheduled-posts`, { credentials: "include" });
       const data = await res.json();
       if (res.ok) setScheduledPosts(data.scheduled_posts || []);
     } catch (err) {

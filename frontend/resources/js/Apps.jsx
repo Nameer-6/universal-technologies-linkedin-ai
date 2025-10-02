@@ -44,8 +44,12 @@ function useSessionAuth() {
     }
 
     // Use token for authentication  
+    const apiBaseUrl = window.location.hostname !== 'localhost' 
+      ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+      : '';
+    
     axios
-      .get("/api/whoami", { 
+      .get(`${apiBaseUrl}/api/whoami`, { 
         headers: { 'Authorization': `Bearer ${token}` }
       })
       .then((res) => {

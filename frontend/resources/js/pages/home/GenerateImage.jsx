@@ -10,7 +10,11 @@ function GenerateImage() {
     setLoading(true);
     setImageUrl("");
     try {
-      const res = await fetch("/api/generate-image", {
+      const apiBaseUrl = window.location.hostname !== 'localhost' 
+        ? 'https://universal-technologies-linkedin-ai-production.up.railway.app' 
+        : '';
+      
+      const res = await fetch(`${apiBaseUrl}/api/generate-image`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt }),
