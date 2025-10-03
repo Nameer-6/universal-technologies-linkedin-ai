@@ -181,7 +181,7 @@ class LinkedinAuthcontroller extends Controller
         ob_start();
         
         try {
-            // Check for temporary token in Authorization header
+            // Check for temporary token in Authorization header FIRST
             $authHeader = $request->header('Authorization');
             if ($authHeader && str_starts_with($authHeader, 'Bearer temp_token_')) {
                 $token = str_replace('Bearer temp_token_', '', $authHeader);

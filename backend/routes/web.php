@@ -158,7 +158,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/api/check-linkedin', [LinkedinAuthcontroller::class, 'checkLinkedInConnection']);
 });
 
-// LinkedIn login and profile should use web middleware to work with temporary tokens
+// LinkedIn endpoints should use web middleware to work with temporary tokens
 Route::get('/api/linkedin-login', [LinkedinAuthcontroller::class, 'linkedinLogin'])->middleware('web');
-Route::get('/api/profile', [LinkedinAuthcontroller::class, 'profile'])->middleware('web');
+Route::get('/api/profile', [LinkedinAuthcontroller::class, 'profile']); // No middleware, let controller handle auth
 
