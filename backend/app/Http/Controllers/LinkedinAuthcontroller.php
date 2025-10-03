@@ -180,9 +180,14 @@ class LinkedinAuthcontroller extends Controller
         // Initialize output buffering to capture any unintended output
         ob_start();
         
+        // Log the request for debugging
+        \Log::info('Profile endpoint called with headers: ' . json_encode($request->headers->all()));
+        
         try {
             // Check for temporary token in Authorization header FIRST
             $authHeader = $request->header('Authorization');
+            \Log::info('Authorization header: ' . $authHeader);
+            
             if ($authHeader && str_starts_with($authHeader, 'Bearer temp_token_')) {
                 $token = str_replace('Bearer temp_token_', '', $authHeader);
                 $user = \App\Models\User::find($token);

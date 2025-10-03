@@ -162,3 +162,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
 Route::get('/api/linkedin-login', [LinkedinAuthcontroller::class, 'linkedinLogin'])->middleware('web');
 Route::get('/api/profile', [LinkedinAuthcontroller::class, 'profile']); // No middleware, let controller handle auth
 
+// Debug endpoint to test auth
+Route::get('/api/debug-test', function(\Illuminate\Http\Request $request) {
+    return response()->json([
+        'message' => 'Debug test successful',
+        'auth_header' => $request->header('Authorization'),
+        'all_headers' => $request->headers->all()
+    ]);
+});
+
