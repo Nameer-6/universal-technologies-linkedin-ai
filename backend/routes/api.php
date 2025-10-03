@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LinkedInController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\LinkedinAuthcontroller;
 
 // Health check endpoint for Railway
 Route::get('/health', function () {
@@ -100,6 +101,9 @@ Route::get('/checkout/cancel', [AuthController::class, 'checkoutCancel'])
 // News API endpoints
 Route::post('/generate-options', [NewsController::class, 'generateOptions']);
 Route::post('/generate-content', [NewsController::class, 'generateContent']);
+
+// Profile endpoint in api.php (without auth:sanctum middleware)
+Route::get('/profile', [LinkedinAuthcontroller::class, 'profile']);
 
 // Route::middleware(['web'])->group(function () {
 //     Route::post('/cancel-subscription', [AuthController::class, 'cancelSubscription']);
